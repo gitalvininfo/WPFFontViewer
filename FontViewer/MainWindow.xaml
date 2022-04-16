@@ -7,8 +7,15 @@
         mc:Ignorable="d"
         Title="Font Viewer" Height="480" Width="600">
     <DockPanel Margin="8">
+
+        <ListBox
+            DockPanel.Dock="Right"
+            x:Name="FontList"
+            ItemsSource="{x:Static Fonts.SystemFontFamilies}"
+            Width="160" />
+
         <Border 
-            DockPanel.Dock="Top"
+            DockPanel.Dock="Bottom"
             CornerRadius="6"
             BorderThickness="1"
             BorderBrush="Gray"
@@ -24,12 +31,6 @@
             </TextBlock>
         </Border>
 
-        <ListBox 
-            x:Name="FontList"
-            DockPanel.Dock="Left"
-            ItemsSource="{x:Static Fonts.SystemFontFamilies}"
-            Width="160" />
-
         <TextBox 
             x:Name="SampleText"
             DockPanel.Dock="Bottom"
@@ -40,22 +41,27 @@
             The quick brown fox jumps over the lazy dog.
         </TextBox>
 
-        <StackPanel Margin="8 0 8 8">
-            <TextBlock Text="{Binding ElementName=SampleText, Path=Text}"
+        <StackPanel 
+            Margin="8 0 8 8">
+            <TextBlock 
+                Text="{Binding ElementName=SampleText, Path=Text}"
             FontFamily="{Binding ElementName=FontList,Path=SelectedItem}"
             FontSize="10"
             TextWrapping="Wrap"
             Margin="0 0 0 4" />
+            
             <TextBlock Text="{Binding ElementName=SampleText, Path=Text}"
             FontFamily="{Binding ElementName=FontList,Path=SelectedItem}"
             FontSize="16"
             TextWrapping="Wrap"
             Margin="0 0 0 4" />
+            
             <TextBlock Text="{Binding ElementName=SampleText, Path=Text}"
             FontFamily="{Binding ElementName=FontList,Path=SelectedItem}"
             FontSize="24"
             TextWrapping="Wrap"
             Margin="0 0 0 4" />
+
             <TextBlock Text="{Binding ElementName=SampleText, Path=Text}"
             FontFamily="{Binding ElementName=FontList,Path=SelectedItem}"
             FontSize="32"
